@@ -1,0 +1,73 @@
+<div class="menu-items-wrapper" [@fadeIn]>
+    <h2 style="margin-top: 0;">Our Menu Items</h2>
+    <button style="margin-left: 0; margin-bottom: 20px; border-radius: 15px;" class="btn-primary"
+        (click)="openModal()">Add Menu Item</button>
+
+    <div class="menu-items-container">
+        <div *ngIf="deleteErrorMessage" class="error-message" [@fadeIn]>
+            {{ deleteErrorMessage }}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let menuItem of pagedMenuItems" [@tableRow]>
+                    <td>{{ menuItem.Id }}</td>
+                    <td>{{ menuItem.ItemName }}</td>
+                    <td>{{ menuItem.Description }}</td>
+                    <td>{{ menuItem.Price | currency }}</td>
+                    <td>{{ menuItem.Category }}</td>
+                    <td>
+                        <button class="btn-danger" (click)="confirmDelete(menuItem)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">Next</button>
+        </div>
+    </div>
+
+    <div class="modal" *ngIf="isModalOpen" [@fadeIn]>
+        <div class="modal-content">
+            <h2 style="color: #333; box-shadow: inset;">Create Menu Item</h2>
+            <form [formGroup]="menuItemForm" (ngSubmit)="createMenuItem()">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input id="itemName" formControlName="itemName" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input id="description" formControlName="description" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input id="price" formControlName="price" type="number" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" formControlName="category">
+                        <option value="">Select a category</option>
+                        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                    </select>
+                </div>
+                <button style="background-color: #3498db; color: #f7f2f2; margin-left: 0;" type="submit"
+                    [disabled]="!menuItemForm.valid">Create</button>
+                <button style="background-color: #c74c3e; color: #f7f2f2;" type="button"
+                    (click)="closeModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

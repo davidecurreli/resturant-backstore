@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CustomersComponent } from './customers/customers.component';
 import { AboutComponent } from './about/about.component';
+import { MenuItemsComponent } from './menu-items/menu-items.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     NavbarComponent,
     OrdersComponent,
     CustomersComponent,
-    AboutComponent
+    AboutComponent,
+    MenuItemsComponent
   ],
   imports: [
     BrowserModule,

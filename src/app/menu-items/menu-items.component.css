@@ -1,4 +1,4 @@
-.customers-wrapper {
+.menu-items-wrapper {
     margin-top: 30px;
 }
 
@@ -8,7 +8,7 @@ h2 {
     font-size: 28px;
 }
 
-.customers-container {
+.menu-items-container {
     background-color: #f8fafc;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -57,11 +57,11 @@ button {
     padding: 8px 16px;
     margin: 0 10px;
     border: none;
-    background-color: #3498db;
-    color: white;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background-color: #3498db;
+    color: white;
 }
 
 .btn-primary {
@@ -101,17 +101,19 @@ span {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    border-radius: 20px;
     max-width: 500px;
-    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -121,47 +123,16 @@ span {
 .form-group label {
     display: block;
     margin-bottom: 5px;
+    color: #2c3e50;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.modal-buttons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.modal-buttons .btn-primary {
-    background-color: #3498db;
-    color: white;
-}
-
-.modal-buttons .btn-primary:hover {
-    background-color: #2980b9;
-}
-
-.modal-buttons .btn-secondary {
-    background-color: #95a5a6;
-    color: white;
-}
-
-.modal-buttons .btn-secondary:hover {
-    background-color: #7f8c8d;
 }
 
 .error-message {
