@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -32,10 +33,26 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
+
 export class AboutComponent {
   teamMembers = [
     { name: 'John Doe', role: 'Head Chef', image: './assets/chef1.png' },
     { name: 'Jane Smith', role: 'Restaurant Manager', image: '/assets/chef2.png' },
     { name: 'Mike Johnson', role: 'Sous Chef', image: 'assets/chef3.png' }
   ];
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (!user.email) {
+      // User is not authenticated, redirect to login
+      this.router.navigate(['/login'], {
+        queryParams: {
+          message: 'Please log in to access the page'
+        }
+      });
+    }
+  }
 }

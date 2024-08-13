@@ -22,3 +22,6 @@
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </form>
 </div>
+<div *ngIf="infoMessage" class="info-message" [@fadeInOut]>
+    {{ infoMessage }}
+</div>

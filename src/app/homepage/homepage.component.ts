@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -23,8 +24,19 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class HomepageComponent implements OnInit {
   firstName: string = '';
 
+  constructor(private router: Router) { }
+
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.firstName = user.firstName || 'Guest';
+    this.firstName = user.firstName;
+
+    if (!this.firstName) {
+      // User is not authenticated, redirect to login
+      this.router.navigate(['/login'], {
+        queryParams: {
+          message: 'Please log in to access the page'
+        }
+      });
+    }
   }
 }

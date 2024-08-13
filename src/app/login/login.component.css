@@ -95,3 +95,13 @@ label {
     border-radius: 5px;
     text-align: center;
 }
+
+.info-message {
+    color: #3498db;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f4f8;
+    border-radius: 5px;
+    text-align: center;
+  }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { UserValidationService } from './user-validation.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,17 +21,29 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
+  infoMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private userValidationService: UserValidationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
+    });
+
+    // Check for message in query params
+    this.route.queryParams.subscribe(params => {
+      if (params['message']) {
+        this.infoMessage = params['message'];
+        setTimeout(() => {
+          this.infoMessage = '';
+        }, 3000);
+      }
     });
   }
 

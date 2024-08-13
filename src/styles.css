@@ -6,3 +6,7 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
 }
+
+button {
+    border-radius: 10px !important;
+}
