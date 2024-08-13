@@ -1,0 +1,23 @@
+<div class="login-container" [@fadeInOut]>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" formControlName="firstName" class="form-control">
+            <div *ngIf="loginForm.get('firstName')?.invalid && (loginForm.get('firstName')?.dirty || loginForm.get('firstName')?.touched)"
+                class="error-message">
+                <small>First name is required</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
+                class="error-message">
+                <small>Please enter a valid email</small>
+            </div>
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid" class="submit-btn">Login</button>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </form>
+</div>

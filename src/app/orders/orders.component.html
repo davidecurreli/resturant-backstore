@@ -1,0 +1,30 @@
+<div class="orders-wrapper" [@fadeIn]>
+    <h2>Our Orders</h2>
+    <div class="orders-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer ID</th>
+                    <th>Order Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of pagedOrders">
+                    <td>{{ order.Id }}</td>
+                    <td>{{ order.CustomerID }}</td>
+                    <td>{{ order.OrderDate | date:'medium' }}</td>
+                    <td>{{ order.TotalAmount | currency }}</td>
+                    <td>{{ order.Status }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">Next</button>
+        </div>
+    </div>
+</div>
