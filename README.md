@@ -1,27 +1,46 @@
-# ResturantBackstore
+# Restaurant Backstore Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+This Angular-based application serves as a backstore management system for a made up restaurant. It provides various functionalities to manage orders, customers, and general restaurant operations.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. User Authentication
+- Secure login system
+- User validation with first name and email
 
-## Code scaffolding
+### 2. Dashboard
+- Welcome page with personalized greeting
+- Quick access to all main features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 3. Order Management
+- View all orders in a paginated table
+- See detailed information for each order
+- Update order status (e.g., Pending, In Progress, Completed)
 
-## Build
+### 4. Customer Management
+- View all customers in a paginated table
+- Add new customers with form validation
+- Delete existing customers with confirmation
+- Error handling for customer operations
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 5. Navigation
+- Responsive navbar for easy navigation between features
+- Conditional rendering of navbar based on authentication status
 
-## Running unit tests
+### 6. About Page
+- Information about the restaurant's story
+- Team member showcase with animations
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technical Highlights
 
-## Running end-to-end tests
+- Built with Angular framework
+- Form validation
+- Angular animations for enhanced user experience
+- Error handling and user feedback mechanisms
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Getting Started
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Run the development server with `ng serve`
+4. Navigate to `http://localhost:4200/` in your browser
