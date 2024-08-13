@@ -1,5 +1,6 @@
-<div class="orders-wrapper" [@fadeIn]>
+<div class="orders-wrapper" [@fadeIn]="">
     <h2>Our Orders</h2>
+
     <div class="orders-container">
         <table>
             <thead>
@@ -9,22 +10,69 @@
                     <th>Order Date</th>
                     <th>Total Amount</th>
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let order of pagedOrders">
+                <tr *ngFor="let order of pagedOrders" [@tableRow]="">
                     <td>{{ order.Id }}</td>
                     <td>{{ order.CustomerID }}</td>
                     <td>{{ order.OrderDate | date:'medium' }}</td>
                     <td>{{ order.TotalAmount | currency }}</td>
                     <td>{{ order.Status }}</td>
+                    <td>
+                        <button (click)="openOrderDetails(order.Id)">Details</button>
+                        <button style="background-color: #5f5c5c" (click)="openStatusModal(order.Id, order.Status)">Update Status</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+
         <div class="pagination">
-            <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">Previous</button>
+            <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
             <span>Page {{ currentPage }} of {{ totalPages }}</span>
-            <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">Next</button>
+            <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" *ngIf="isModalOpen" [@fadeIn]="">
+    <div class="modal-content">
+        <h3>Order Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedOrderDetails">
+                    <td>{{ item.itemName }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.price | currency }}</td>
+                    <td>{{ item.category }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%; text-align: end;">
+            <button (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" *ngIf="isStatusModalOpen" [@fadeIn]="">
+    <div class="modal-content">
+        <h3>Update Status for Order: {{ selectedOrderId }} | Current Status: {{ currentSelectedOrderStatus }}</h3>
+        <select [(ngModel)]="newStatus">
+            <option value="">Select new status</option>
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+        </select>
+        <div style="width: 100%; text-align: end;">
+            <button (click)="updateOrderStatus()" [disabled]="!newStatus">Update</button>
+            <button (click)="closeStatusModal()">Cancel</button>
         </div>
     </div>
 </div>

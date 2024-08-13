@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -12,11 +12,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CustomersComponent } from './customers/customers.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'homepage', component: HomepageComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
@@ -26,7 +28,8 @@ const routes: Routes = [
     HomepageComponent,
     NavbarComponent,
     OrdersComponent,
-    CustomersComponent
+    CustomersComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

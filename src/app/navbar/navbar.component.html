@@ -1,8 +1,9 @@
 <nav class="navbar">
-    <div class="navbar-logo">My Demo Restaurant</div>
+    <div class="navbar-logo">H-Ey Demo Restaurant</div>
     <div class="navbar-items">
-      <span class="welcome-message">Hi {{firstName}} {{lastName}}</span>
-      <a routerLink="/about" class="nav-link">About</a>
-      <button (click)="logout()" class="logout-btn">Logout</button>
+        <span class="welcome-message">Hi {{firstName}} {{lastName}}</span>
+        <a *ngIf="!isAboutPage" routerLink="/about" class="nav-link">About</a>
+        <a *ngIf="isAboutPage" routerLink="/homepage" class="nav-link">Home</a>
+        <button (click)="logout()" class="logout-btn">Logout</button>
     </div>
-  </nav>
+</nav>

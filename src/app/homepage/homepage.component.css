@@ -2,13 +2,20 @@
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  h1 {
-    color: #333;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #f7fbff, #d4a9fc, #a9beff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+p {
     margin-bottom: 20px;
-  }
-  
-  p {
-    margin-bottom: 20px;
-  }
+    color: #34495e;
+    font-size: 18px;
+}

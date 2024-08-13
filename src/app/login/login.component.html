@@ -1,8 +1,9 @@
+<h1 [@fadeInOut] class="welcome-text">H-Ey Demo Restaurant Backstore!</h1>
 <div class="login-container" [@fadeInOut]>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <h2>Login</h2>
         <div class="form-group">
-            <label for="firstName">First Name:</label>
+            <label for="firstName">My First Name</label>
             <input type="text" id="firstName" formControlName="firstName" class="form-control">
             <div *ngIf="loginForm.get('firstName')?.invalid && (loginForm.get('firstName')?.dirty || loginForm.get('firstName')?.touched)"
                 class="error-message">
@@ -10,7 +11,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">My Email</label>
             <input type="email" id="email" formControlName="email" class="form-control">
             <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
                 class="error-message">

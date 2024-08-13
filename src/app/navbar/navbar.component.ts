@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +10,20 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   firstName: string = '';
   lastName: string = '';
+  isAboutPage: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.firstName = user.firstName || '';
     this.lastName = user.lastName || '';
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.isAboutPage = event.urlAfterRedirects === '/about';
+    });
   }
 
   logout() {

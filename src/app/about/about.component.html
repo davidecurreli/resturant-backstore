@@ -1,0 +1,29 @@
+<div class="about-container" [@scaleIn]>
+    <h1 [@fadeInUp]>About Our Restaurant</h1>
+
+    <div class="about-section" [@fadeInUp]>
+        <h2>Our Story</h2>
+        <p>Established in 2015, our restaurant has been a culinary cornerstone in the community for nearly a decade. We
+            take pride in our commitment to using locally-sourced, organic ingredients and crafting dishes that blend
+            traditional flavors with contemporary flair.</p>
+    </div>
+
+    <div class="about-section" [@fadeInUp]>
+        <h2>Our Philosophy</h2>
+        <p>At the heart of our restaurant is a passion for creating extraordinary dining experiences. We believe in the
+            power of food to bring people together, spark joy, and create lasting memories. Our team is dedicated to
+            delivering exceptional service and innovative cuisine that delights and surprises our guests.</p>
+    </div>
+
+    <div class="about-section" [@fadeInUp]>
+        <h2>Meet Our Team</h2>
+        <div class="team-members">
+            <div class="team-member" *ngFor="let member of teamMembers; let i = index"
+                [@fadeInUp]="{ value: '', params: { delay: i * 200 + 'ms' } }">
+                <img [src]="member.image" [alt]="member.name">
+                <h3>{{member.name}}</h3>
+                <p>{{member.role}}</p>
+            </div>
+        </div>
+    </div>
+</div>
