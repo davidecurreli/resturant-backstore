@@ -1,4 +1,4 @@
-# Restaurant Backstore Application
+# H-Ey Restaurant Backstore Application
 
 This Angular-based application serves as a backstore management system for a made up restaurant. It provides various functionalities to manage orders, menu items, customers, and general restaurant operations.
 
@@ -51,5 +51,5 @@ This Angular-based application serves as a backstore management system for a mad
 
 1. Clone the repository
 2. Install dependencies with `npm install`
-3. Run the development server with `ng serve`
+3. Run the development server with `ng serve` or alternatively `npx ng serve` to avoid angular-cli installation
 4. Navigate to `http://localhost:4200/` in your browser
