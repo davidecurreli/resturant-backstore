@@ -36,6 +36,13 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
 
+    const user = localStorage.getItem('user');
+    if (user !== null) {
+      console.log('Login successful');
+      this.router.navigate(['/homepage']);
+      return;
+    }
+
     // Check for message in query params
     this.route.queryParams.subscribe(params => {
       if (params['message']) {

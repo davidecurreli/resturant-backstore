@@ -59,6 +59,9 @@
                 <button style="background-color: #3498db; color: #f7f2f2; margin-left: 0;" type="submit" [disabled]="!customerForm.valid">Create</button>
                 <button style="background-color: #c74c3e; color: #f7f2f2;" type="button" (click)="closeModal()">Cancel</button>
             </form>
+            <div *ngIf="createErrorMessage" class="error-message" [@fadeIn]="" style="margin-top: 10px;">
+                {{ createErrorMessage }}
+            </div>
         </div>
     </div>
 </div>

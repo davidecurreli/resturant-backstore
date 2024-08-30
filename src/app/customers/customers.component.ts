@@ -40,6 +40,7 @@ export class CustomersComponent implements OnInit {
   isModalOpen = false;
   customerForm: FormGroup;
   deleteErrorMessage: string | null = null;
+  createErrorMessage: string | null = null;
 
   constructor(
     private customersService: CustomersService,
@@ -100,6 +101,10 @@ export class CustomersComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating customer:', error);
+          this.createErrorMessage = 'Creation was not successful. Please try again.';
+          setTimeout(() => {
+            this.createErrorMessage = null;
+          }, 3000);
         }
       );
     }

@@ -15,13 +15,6 @@ import { CustomersComponent } from './customers/customers.component';
 import { AboutComponent } from './about/about.component';
 import { MenuItemsComponent } from './menu-items/menu-items.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'homepage', component: HomepageComponent },
-  { path: 'about', component: AboutComponent }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +32,7 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormsModule,
-    RouterModule.forRoot(routes)
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
